@@ -1,5 +1,6 @@
 {
-    "title": "My first dashboard",
+
+    "title": "My dashboard",
     "services": {
         "query": {
             "idQueue": [
@@ -27,8 +28,8 @@
             ],
             "list": {
                 "0": {
-                    "from": "2013-07-27T22:08:06.000Z",
-                    "to": "2013-07-27T23:08:06.000Z",
+                    "from": "2013-08-17T20:29:14.352Z",
+                    "to": "2013-08-17T23:29:14.352Z",
                     "field": "@timestamp",
                     "type": "time",
                     "mandate": "must",
@@ -44,68 +45,16 @@
     },
     "rows": [
         {
-            "title": "Intro",
-            "height": "450px",
-            "editable": true,
-            "collapse": false,
-            "collapsable": false,
-            "panels": [
-                {
-                    "error": false,
-                    "span": 4,
-                    "editable": true,
-                    "group": [
-                        "default"
-                    ],
-                    "type": "text",
-                    "mode": "markdown",
-                    "content": "![kibana](common/img/kibana.png) \n\n##### Did you just upgrade? Not expecting this screen?\nIf you were using the old default page you might not be expecting this screen. I understand, change can be awkward. Let me explain. \n\n##### Setting a global default dashboard\nKibana has always shipped with an interface for Logstash, still does! You can access it [here](index.html#dashboard/file/logstash.json). However, if you want to make it your default again, all you you need to do is rename a file!\nIn your Kibana installation directory: \n\nRename *logstash.json* to *default.json* and refresh. Should be all set.\n\n##### But wait, there's more!\nIn fact, you can add any exported dashboard to that directory and access it as *http://YOUR-HOST -HERE/index.html#dashboard/file/YOUR-DASHBOARD.json*. Neat trick eh?",
-                    "style": { },
-                    "title": "",
-                    "status": "Stable"
-                },
-                {
-                    "error": false,
-                    "span": 1,
-                    "editable": false,
-                    "group": [
-                        "default"
-                    ],
-                    "type": "text",
-                    "mode": "markdown",
-                    "content": "",
-                    "style": { },
-                    "status": "Stable"
-                },
-                {
-                    "error": false,
-                    "span": 7,
-                    "editable": true,
-                    "group": [
-                        "default"
-                    ],
-                    "type": "text",
-                    "mode": "markdown",
-                    "content": "### Welcome to my dashboard. \nGlad you could make it. Happy to have you here! Lets get started, shall we?\n##### Requirements\n* **A good browser.** \n The latest version of Chrome or Firefox is recommended. Safari (latest version) and Internet Explorer 9 and above are also supported.\n* **A webserver.** \n Just somewhere to host the HTML and Javascript. Basically any webserver will work.\n* **Elasticsearch** \n 0.20.5 or above. Kibana will soon move to requiring Elasticsearch 0.90 or above, so upgrading is recommended.\n\n##### Configuration\nIf Kibana and Elasticsearch are on the same host, and you're using the default Elasticsearch port, then you're all set. Kibana is configured to use that setup by default! \n\nIf not, you need to edit *config.js* and set the *elasticsearch* parameter with the URL (including port, probably 9200) of your Elasticsearch server. The host part should be the entire, fully qualified domain name, or IP, **not localhost**.\n#### Are you a Logstash User?\n+ **YES** - Great! We have a prebuilt dashboard: [(Logstash Dashboard)](index.html#/dashboard/file/logstash.json). See the note to the right about making it your global default \n\n+ **NO** - Hey, no problem, you just have a bit of setup to do. You have a few choices: \n\n 1. [Sample Dashboard](index.html#/dashboard/file/guided.json) *I don't have much data yet, please extract some basics for me* \n 2. [Unconfigured Dashboard](index.html#/dashboard/file/noted.json) *I have a lot of data and I don't want Kibana to query it at once*\n 3. [Blank Dashboard](index.html#/dashboard/file/blank.json) *I'm comfortable figuring it out on my own*",
-                    "style": { },
-                    "status": "Stable"
-                }
-            ]
-        },
-        {
-            "title": "Loader",
-            "height": "50px",
+            "title": "Control",
+            "height": "40px",
             "editable": true,
             "collapse": false,
             "collapsable": true,
             "panels": [
                 {
                     "error": false,
-                    "span": 3,
+                    "span": 2,
                     "editable": true,
-                    "group": [
-                        "default"
-                    ],
                     "type": "dashcontrol",
                     "save": {
                         "gist": false,
@@ -123,15 +72,252 @@
                     "temp": true,
                     "ttl_enable": true,
                     "temp_ttl": "30d"
+                },
+                {
+                    "error": "",
+                    "span": 10,
+                    "editable": true,
+                    "type": "timepicker",
+                    "status": "Stable",
+                    "mode": "relative",
+                    "time_options": [
+                        "5m",
+                        "15m",
+                        "30m",
+                        "45m",
+                        "1h",
+                        "2h",
+                        "3h",
+                        "6h",
+                        "12h",
+                        "24h",
+                        "2d",
+                        "7d",
+                        "14d",
+                        "21d",
+                        "30d",
+                        "60d",
+                        "90d",
+                        "120d",
+                        "180d",
+                        "360d"
+                    ],
+                    "timespan": "3h",
+                    "timefield": "@timestamp",
+                    "timeformat": "",
+                    "refresh": {
+                        "enable": false,
+                        "interval": 30,
+                        "min": 3
+                    },
+                    "filter_id": 0
+                }
+            ]
+        },
+        {
+            "title": "Query",
+            "height": "30px",
+            "editable": true,
+            "collapse": false,
+            "collapsable": true,
+            "panels": [
+                {
+                    "error": false,
+                    "span": 12,
+                    "editable": true,
+                    "type": "query",
+                    "label": "Search",
+                    "query": "*",
+                    "pinned": true,
+                    "history": [
+                        "*",
+                        "@source:\"jvmdramas.com\"",
+                        "@source:\"domix.org\"",
+                        "@source:\"domingosuarez.com\"",
+                        "@source:\"jvmdramas\"",
+                        "@source:\"es.sindica.to\"",
+                        "source:\"es.sindica.to\"",
+                        "source:es.sindica.to",
+                        ""
+                    ],
+                    "remember": 10
+                }
+            ]
+        },
+        {
+            "title": "Map",
+            "height": "350px",
+            "editable": true,
+            "collapse": false,
+            "collapsable": true,
+            "panels": [
+                {
+                    "error": false,
+                    "span": 12,
+                    "editable": true,
+                    "type": "bettermap",
+                    "queries": {
+                        "mode": "all",
+                        "ids": [
+                            0
+                        ]
+                    },
+                    "size": 1000,
+                    "spyable": true,
+                    "tooltip": "_id",
+                    "field": "@fields.coords"
+                }
+            ]
+        },
+        {
+            "title": "Graph",
+            "height": "250px",
+            "editable": true,
+            "collapse": false,
+            "collapsable": true,
+            "panels": [
+                {
+                    "span": 12,
+                    "editable": true,
+                    "type": "histogram",
+                    "mode": "count",
+                    "time_field": "@timestamp",
+                    "queries": {
+                        "mode": "all",
+                        "ids": [
+                            0
+                        ]
+                    },
+                    "value_field": null,
+                    "auto_int": true,
+                    "resolution": 100,
+                    "interval": "1m",
+                    "fill": 0,
+                    "linewidth": 3,
+                    "timezone": "browser",
+                    "spyable": true,
+                    "zoomlinks": true,
+                    "bars": true,
+                    "stack": true,
+                    "points": false,
+                    "lines": false,
+                    "legend": true,
+                    "x-axis": true,
+                    "y-axis": true,
+                    "percentage": false,
+                    "interactive": true,
+                    "title": "Events over time"
+                }
+            ]
+        },
+        {
+            "title": "Graph2",
+            "height": "250px",
+            "editable": true,
+            "collapse": false,
+            "collapsable": true,
+            "panels": [
+                {
+                    "error": false,
+                    "span": 4,
+                    "editable": true,
+                    "type": "pie",
+                    "editorTabs": [
+                        {
+                            "title": "Queries",
+                            "src": "partials/querySelect.html"
+                        }
+                    ],
+                    "query": {
+                        "field": "_type",
+                        "goal": 100
+                    },
+                    "queries": {
+                        "mode": "all",
+                        "ids": [
+                            0
+                        ]
+                    },
+                    "size": 10,
+                    "exclude": [ ],
+                    "donut": false,
+                    "tilt": false,
+                    "legend": "above",
+                    "labels": true,
+                    "mode": "terms",
+                    "default_field": "DEFAULT",
+                    "spyable": true
+                },
+                {
+                    "error": false,
+                    "span": 4,
+                    "editable": true,
+                    "type": "pie",
+                    "editorTabs": [
+                        {
+                            "title": "Queries",
+                            "src": "partials/querySelect.html"
+                        }
+                    ],
+                    "query": {
+                        "field": "@fields.verb",
+                        "goal": 100
+                    },
+                    "queries": {
+                        "mode": "all",
+                        "ids": [
+                            0
+                        ]
+                    },
+                    "size": 10,
+                    "exclude": [ ],
+                    "donut": false,
+                    "tilt": false,
+                    "legend": "above",
+                    "labels": true,
+                    "mode": "terms",
+                    "default_field": "DEFAULT",
+                    "spyable": true
+                },
+                {
+                    "error": false,
+                    "span": 4,
+                    "editable": true,
+                    "type": "pie",
+                    "editorTabs": [
+                        {
+                            "title": "Queries",
+                            "src": "partials/querySelect.html"
+                        }
+                    ],
+                    "query": {
+                        "field": "@fields.response",
+                        "goal": 100
+                    },
+                    "queries": {
+                        "mode": "all",
+                        "ids": [
+                            0
+                        ]
+                    },
+                    "size": 10,
+                    "exclude": [ ],
+                    "donut": false,
+                    "tilt": false,
+                    "legend": "above",
+                    "labels": true,
+                    "mode": "terms",
+                    "default_field": "DEFAULT",
+                    "spyable": true
                 }
             ]
         }
     ],
     "editable": true,
     "index": {
-        "interval": "none",
+        "interval": "day",
         "pattern": "[logstash-]YYYY.MM.DD",
-        "default": "NOT_CONFIGURED"
+        "default": "NO_TIME_FILTER_OR_INDEX_PATTERN_NOT_MATCHED"
     },
     "style": "dark"
 

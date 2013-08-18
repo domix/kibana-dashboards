@@ -1,6 +1,6 @@
 {
 
-    "title": "My dashboard",
+    "title": "Dashboard",
     "services": {
         "query": {
             "idQueue": [
@@ -28,8 +28,8 @@
             ],
             "list": {
                 "0": {
-                    "from": "2013-08-17T20:29:14.352Z",
-                    "to": "2013-08-17T23:29:14.352Z",
+                    "from": "2013-08-18T00:54:09.641Z",
+                    "to": "2013-08-18T00:59:09.641Z",
                     "field": "@timestamp",
                     "type": "time",
                     "mandate": "must",
@@ -102,7 +102,7 @@
                         "180d",
                         "360d"
                     ],
-                    "timespan": "3h",
+                    "timespan": "5m",
                     "timefield": "@timestamp",
                     "timeformat": "",
                     "refresh": {
@@ -131,14 +131,7 @@
                     "pinned": true,
                     "history": [
                         "*",
-                        "@source:\"jvmdramas.com\"",
-                        "@source:\"domix.org\"",
-                        "@source:\"domingosuarez.com\"",
-                        "@source:\"jvmdramas\"",
-                        "@source:\"es.sindica.to\"",
-                        "source:\"es.sindica.to\"",
-                        "source:es.sindica.to",
-                        ""
+                        "@source:\"es.sindica.to\""
                     ],
                     "remember": 10
                 }
@@ -153,7 +146,7 @@
             "panels": [
                 {
                     "error": false,
-                    "span": 12,
+                    "span": 8,
                     "editable": true,
                     "type": "bettermap",
                     "queries": {
@@ -166,12 +159,42 @@
                     "spyable": true,
                     "tooltip": "_id",
                     "field": "@fields.coords"
+                },
+                {
+                    "error": false,
+                    "span": 4,
+                    "editable": true,
+                    "type": "terms",
+                    "queries": {
+                        "mode": "all",
+                        "ids": [
+                            0
+                        ]
+                    },
+                    "field": "@fields.geoip.country_code3",
+                    "exclude": [
+                        ""
+                    ],
+                    "missing": false,
+                    "other": false,
+                    "size": 10,
+                    "order": "count",
+                    "style": {
+                        "font-size": "10pt"
+                    },
+                    "donut": false,
+                    "tilt": false,
+                    "labels": true,
+                    "arrangement": "horizontal",
+                    "chart": "bar",
+                    "counter_pos": "above",
+                    "spyable": true
                 }
             ]
         },
         {
             "title": "Graph",
-            "height": "250px",
+            "height": "150px",
             "editable": true,
             "collapse": false,
             "collapsable": true,
@@ -191,7 +214,7 @@
                     "value_field": null,
                     "auto_int": true,
                     "resolution": 100,
-                    "interval": "1m",
+                    "interval": "1s",
                     "fill": 0,
                     "linewidth": 3,
                     "timezone": "browser",
@@ -308,6 +331,56 @@
                     "labels": true,
                     "mode": "terms",
                     "default_field": "DEFAULT",
+                    "spyable": true
+                }
+            ]
+        },
+        {
+            "title": "Data",
+            "height": "350px",
+            "editable": true,
+            "collapse": false,
+            "collapsable": true,
+            "panels": [
+                {
+                    "error": false,
+                    "span": 12,
+                    "editable": true,
+                    "type": "table",
+                    "status": "Stable",
+                    "queries": {
+                        "mode": "all",
+                        "ids": [
+                            0
+                        ]
+                    },
+                    "size": 100,
+                    "pages": 5,
+                    "offset": 0,
+                    "sort": [
+                        "@fields.agent",
+                        "desc"
+                    ],
+                    "group": "default",
+                    "style": {
+                        "font-size": "9pt"
+                    },
+                    "overflow": "min-height",
+                    "fields": [
+                        null,
+                        "@source_path",
+                        "@timestamp",
+                        "@fields.geoip.city_name",
+                        "@fields.geoip.country_code2",
+                        "@fields.request"
+                    ],
+                    "highlight": [ ],
+                    "sortable": true,
+                    "header": true,
+                    "paging": true,
+                    "field_list": true,
+                    "trimFactor": 300,
+                    "normTimes": true,
                     "spyable": true
                 }
             ]
